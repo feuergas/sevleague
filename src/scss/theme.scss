@@ -1,0 +1,19 @@
+.text-gold {
+    color: #d4af37;
+}
+
+.text-silver {
+    color: #AAA9AD;
+}
+
+.text-bronze {
+    color: #A97142;
+}
+
+.icon-black {
+    filter: brightness(0) saturate(100%);
+}
+
+.icon-white {
+    filter: brightness(0) saturate(100%) invert(100%); // sepia(100%) saturate(2%) hue-rotate(80deg) brightness(111%) contrast(101%);
+}
