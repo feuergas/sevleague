@@ -65,7 +65,7 @@ const PlainNavBar = () => {
                                         </Button>
                                     </Form>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item>New around here? Sign up</NavDropdown.Item>
+                                    <NavDropdown.Item href="/signup">New around here? Sign up</NavDropdown.Item>
                                     <NavDropdown.Item>Forgot password?</NavDropdown.Item>
                                 </NavDropdown>
                             )
