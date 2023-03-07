@@ -13,6 +13,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { DataBase } from './Firebase';
 import SignUp from './pages/SignUp';
 import ToastNotification from './components/ToastNotification';
+import About from './pages/About';
 
 const App = () => {
 
