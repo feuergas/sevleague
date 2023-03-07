@@ -36,6 +36,7 @@ const PlainNavBar = () => {
                                 null
                             )
                         }
+                        <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     <Nav className="mr-auto">
                         {

@@ -44,6 +44,7 @@ const App = () => {
                         <Route path='/contestset' element={<ContestSet />} />
                         <Route path='/problemset' element={<ProblemSet />} />
                         <Route path='/signup' element={<SignUp />} />
+                        <Route path='/about' element={<About />} />
                     </Routes>
                 </Container>
             </Router>

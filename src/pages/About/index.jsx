@@ -4,8 +4,7 @@ const About = () => {
   return (
     <div>
       <h1>
-        GeeksforGeeks is a Computer
-        Science portal for geeks.
+        SevLeague is a site made for mathematics contests.
       </h1>
     </div>
   );
