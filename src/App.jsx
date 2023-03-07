@@ -13,7 +13,6 @@ import { collection, getDocs } from 'firebase/firestore';
 import { DataBase } from './Firebase';
 import SignUp from './pages/SignUp';
 import ToastNotification from './components/ToastNotification';
-import About from './pages/About';
 
 const App = () => {
 
@@ -35,7 +34,6 @@ const App = () => {
     return (
         <>
             <Router>
-                {/*<Toaster />*/}
                 <ToastNotification />
                 <RouterNavBar />
                 <Container fluid>
@@ -45,7 +43,7 @@ const App = () => {
                         <Route path='/contestset' element={<ContestSet />} />
                         <Route path='/problemset' element={<ProblemSet />} />
                         <Route path='/signup' element={<SignUp />} />
-                        <Route path='/about' element={<About />} />
+
                     </Routes>
                 </Container>
             </Router>

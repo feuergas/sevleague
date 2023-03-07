@@ -1,4 +1,4 @@
-import { toast, Toaster, ToastBar } from 'react-hot-toast';
+import toast, { Toaster, ToastBar } from 'react-hot-toast';
 
 
 const ToastNotification = () => {
