@@ -20,7 +20,7 @@ const PlainNavBar = () => {
                         height="30"
                         className="d-inline-block align-top icon-white"
                     />{' '}
-                    <strong>SevLeague<sub>βeta</sub></strong>
+                    <strong>SevLeague<sub>αlpha</sub></strong>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbar-nav" />
                 <Navbar.Collapse id="navbar-nav">
