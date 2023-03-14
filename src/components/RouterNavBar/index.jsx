@@ -1,13 +1,22 @@
+import { signOut } from "firebase/auth";
 import React from "react";
-import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { toast } from "react-hot-toast";
 import { useLocation } from "react-router";
+import { Auth } from "../../Firebase";
+import LoginForm from "../LoginForm";
 import NavThemeSwitch from '../NavThemeSwitch';
 
-const PlainNavBar = () => {
+const PlainNavBar = ({ user }) => {
 
     const loggedIn = false;
 
     const location = useLocation();
+
+    const onLogout = async (e) => {
+        await signOut(Auth);
+        toast.success("You signed out");
+    };
 
     return (
         <Navbar expand="md" bg="primary" className="mb-4" data-bs-theme="dark" data-bs-theme-static>
@@ -36,37 +45,23 @@ const PlainNavBar = () => {
                                 null
                             )
                         }
+                        <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     <Nav className="mr-auto">
                         {
-                            loggedIn ? (
-                                <Nav.Link>Feuergas</Nav.Link>
+                            user === null ? (
+                                <LoginForm />
                             ) : (
                                 <NavDropdown
-                                    title="Log In"
+                                    title={user.username}
                                     id="login-dropdown"
                                     align={{ md: 'end' }}
                                     data-bs-theme
                                 >
-                                    <Form className="px-4 py-3">
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Email address</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Password</Form.Label>
-                                            <Form.Control type="password" placeholder="Password" />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3">
-                                            <Form.Check type="checkbox" label="Remember me" />
-                                        </Form.Group>
-                                        <Button variant="primary" type="submit">
-                                            Sign in
-                                        </Button>
-                                    </Form>
+                                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                                    <NavDropdown.Item>Settings</NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item>New around here? Sign up</NavDropdown.Item>
-                                    <NavDropdown.Item>Forgot password?</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={onLogout}>Sign out</NavDropdown.Item>
                                 </NavDropdown>
                             )
                         }

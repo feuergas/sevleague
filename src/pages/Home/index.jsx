@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import ActiveContestCard from '../components/ActiveContestCard';
-import ProblemCard from '../components/ProblemCard';
-import Top10Card from '../components/Top10Card';
+import ActiveContestCard from '../../components/ActiveContestCard';
+import ProblemCard from '../../components/ProblemCard';
+import Top10Card from '../../components/Top10Card';
 
 const Home = () => {
     return (
