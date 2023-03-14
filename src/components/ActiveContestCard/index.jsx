@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Badge } from "react-bootstrap";
 import CardList from "../CardList";
 
-const BASE_URL = 'https://gasmatematica.altervista.org/beta/api';
+const BASE_URL = 'https://sevleague.altervista.org/api';
 
 const ActiveContestCard = ({ number }) => {
 

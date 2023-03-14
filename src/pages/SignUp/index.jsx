@@ -17,8 +17,6 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(Auth, email, password)
             .then((userCredential) => {
                 // Signed In
-                const user = userCredential.user;
-                console.log(user);
                 navigate('/');
                 toast.success('Registration complete');
             })
