@@ -1,4 +1,5 @@
 import { Navbar } from "flowbite-react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import ThemeSwitch from "./ThemeSwitch";
 
@@ -17,9 +18,11 @@ const MyNavBar = () => {
 			className='sticky top-0 left-0 z-20 mb-4 w-full border-b border-gray-200 dark:border-gray-600 dark:bg-gray-800'
 		>
 			<Navbar.Brand href='/'>
-				<img
+				<Image
 					src='/logo.svg'
 					className='mr-3 h-6 sm:h-9'
+					width={40}
+					height={40}
 					alt='SevLeague Logo'
 				/>
 				<span className='self-center whitespace-nowrap text-xl font-semibold dark:text-white'>
