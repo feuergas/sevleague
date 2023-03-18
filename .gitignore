@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+sevleague.code-workspace
 
 # vercel
 .vercel
