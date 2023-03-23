@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
+    mode : 'jit',
     content :
             [
                 "./app/**/*.{js,ts,jsx,tsx}",
@@ -9,6 +12,10 @@ module.exports = {
             ],
     theme : {
         extend : {},
+        colors : {
+            primary : colors.blue,
+            secondary : colors.purple,
+        }
     },
     plugins :
             [

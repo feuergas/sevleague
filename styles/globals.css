@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+		@apply text-gray-800 dark:text-gray-200;
+	}
+}
+
+@layer components {
+	.bg-glass {
+		@apply bg-transparent bg-none backdrop-blur;
+	}
+}
+
+@layer utilities {
+	.bg-wallpaper {
+		@apply bg-white bg-gradient-to-bl from-teal-100/50 via-blue-100/50 to-indigo-100/50 dark:bg-black dark:from-teal-900/50 dark:via-blue-900/50 dark:to-indigo-900/50;
+	}
+
+	.bg-gradient-primary {
+		@apply bg-gradient-to-r from-primary-500 to-teal-500 dark:from-primary-400 dark:to-teal-400;
+	}
+	.text-gradient-primary {
+		@apply bg-gradient-primary bg-clip-text text-transparent;
+	}
+}

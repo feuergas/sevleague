@@ -2,7 +2,12 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Dropdown } from "flowbite-react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BsSunFill, BsMoonStarsFill, BsCircleHalf } from "react-icons/bs";
+import {
+	BsSunFill,
+	BsMoonStarsFill,
+	BsCircleHalf,
+	BsDisplayFill,
+} from "react-icons/bs";
 
 const ThemeSwitch = () => {
 	const [mounted, setMounted] = useState(false);
@@ -20,30 +25,37 @@ const ThemeSwitch = () => {
 		{
 			name: "Light",
 			value: "light",
-			icon: <BsSunFill className='mr-2' />,
+			icon: <BsSunFill />,
 			// icon: <FontAwesomeIcon icon='sun' />,
 		},
 		{
 			name: "Dark",
 			value: "dark",
-			icon: <BsMoonStarsFill className='mr-2' />,
+			icon: <BsMoonStarsFill />,
 			// icon: <FontAwesomeIcon icon='moon' />,
 		},
 		{
 			name: "System",
 			value: "system",
-			icon: <BsCircleHalf className='mr-2' />,
+			icon: <BsDisplayFill />,
 			// icon: <FontAwesomeIcon icon='circle-half-stroke' />,
 		},
 	];
 
 	return (
-		<div className='flex md:order-2'>
+		<div className='inline-flex rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'>
 			<Dropdown
-				arrowIcon={true}
+				arrowIcon={false}
 				inline={true}
-				label={themes.map((radioTheme) =>
-					theme === radioTheme.value ? radioTheme.icon : null
+				label={themes.map((radioTheme, idx) =>
+					theme === radioTheme.value ? (
+						<div
+							className='inline-flex h-6 w-6 items-center justify-center'
+							key={idx}
+						>
+							{radioTheme.icon}
+						</div>
+					) : null
 				)}
 			>
 				{themes.map((radioTheme) => (
@@ -52,7 +64,9 @@ const ThemeSwitch = () => {
 						onClick={() => setTheme(radioTheme.value)}
 					>
 						{radioTheme.icon}
-						<span className='ml-1'>{radioTheme.name}</span>
+						<span className='ml-2 font-medium'>
+							{radioTheme.name}
+						</span>
 					</Dropdown.Item>
 				))}
 			</Dropdown>

@@ -1,8 +1,8 @@
 import { BreadcrumbItem } from "@/types";
-import { Breadcrumb } from "flowbite-react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { HomeIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { HomeIcon } from "@heroicons/react/24/solid";
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 const convertBreadcrumb = (str: string): string => {
 	str = str.replace(/-/g, " ");
@@ -36,24 +36,39 @@ const MyBreadcrumb = () => {
 	if (!breadcrumbs) return null;
 
 	return (
-		<Breadcrumb className='mx-3 rounded-lg bg-gray-100 px-5 py-3 text-gray-700 dark:border-gray-700 dark:bg-gray-800'>
-			<Breadcrumb.Item
-				href='/'
-				icon={HomeIcon}
-			>
-				Home
-			</Breadcrumb.Item>
-			{breadcrumbs.length > 0
-				? breadcrumbs.map((breadcrumb: BreadcrumbItem) => (
-						<Breadcrumb.Item
-							key={breadcrumb.name}
-							href={breadcrumb.href}
-						>
-							{convertBreadcrumb(breadcrumb.name)}
-						</Breadcrumb.Item>
-				  ))
-				: null}
-		</Breadcrumb>
+		<nav
+			className='bg-glass mx-3 mb-4 flex rounded-lg px-5 py-3 shadow dark:shadow-lg'
+			aria-label='Breadcrumb'
+		>
+			<ol className='inline-flex items-center space-x-1 md:space-x-3'>
+				<li className='inline-flex items-center'>
+					<a
+						href='/'
+						className='inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white'
+					>
+						<HomeIcon className='mr-2 h-4 w-4' />
+						Home
+					</a>
+				</li>
+				{breadcrumbs.length > 0
+					? breadcrumbs.map(
+							(breadcrumb: BreadcrumbItem, idx: number) => (
+								<li key={idx}>
+									<div className='flex items-center'>
+										<ChevronRightIcon className='h-6 w-6 text-gray-400' />
+										<a
+											href={breadcrumb.href}
+											className='text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white md:ml-2'
+										>
+											{convertBreadcrumb(breadcrumb.name)}
+										</a>
+									</div>
+								</li>
+							)
+					  )
+					: null}
+			</ol>
+		</nav>
 	);
 };
 
