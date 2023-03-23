@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { BsList } from "react-icons/bs";
@@ -63,7 +64,7 @@ const MyNavBar = () => {
 					<ul className='mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium'>
 						{pages.map((item, idx) => (
 							<li key={idx}>
-								<a
+								<Link
 									href={item.href}
 									className={classNames(
 										item.href == router.asPath
@@ -76,7 +77,7 @@ const MyNavBar = () => {
 									)}
 								>
 									{item.name}
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>

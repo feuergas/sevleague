@@ -10,8 +10,9 @@ import {
 } from "react-icons/bs";
 
 const ThemeSwitch = () => {
-	const [mounted, setMounted] = useState(false);
+	const [mounted, setMounted] = useState<boolean>(false);
 	const { theme, setTheme } = useTheme();
+	const [hidden, sethidden] = useState<boolean>(true);
 
 	useEffect(() => {
 		setMounted(true);
