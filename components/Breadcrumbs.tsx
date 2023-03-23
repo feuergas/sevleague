@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 const convertBreadcrumb = (str: string): string => {
 	str = str.replace(/-/g, " ");
@@ -42,13 +43,13 @@ const MyBreadcrumb = () => {
 		>
 			<ol className='inline-flex items-center space-x-1 md:space-x-3'>
 				<li className='inline-flex items-center'>
-					<a
+					<Link
 						href='/'
 						className='inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white'
 					>
 						<HomeIcon className='mr-2 h-4 w-4' />
 						Home
-					</a>
+					</Link>
 				</li>
 				{breadcrumbs.length > 0
 					? breadcrumbs.map(
@@ -56,12 +57,12 @@ const MyBreadcrumb = () => {
 								<li key={idx}>
 									<div className='flex items-center'>
 										<ChevronRightIcon className='h-6 w-6 text-gray-400' />
-										<a
+										<Link
 											href={breadcrumb.href}
 											className='text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white md:ml-2'
 										>
 											{convertBreadcrumb(breadcrumb.name)}
-										</a>
+										</Link>
 									</div>
 								</li>
 							)

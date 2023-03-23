@@ -24,7 +24,7 @@ const MyNavBar = () => {
 	return (
 		<nav className='bg-glass sticky top-0 z-40 mb-4 w-full flex-none px-2 py-2.5 shadow dark:shadow-lg sm:px-4 lg:z-50'>
 			<div className='mx-auto flex flex-wrap items-center justify-between'>
-				<a
+				<Link
 					className='flex items-center'
 					href='/'
 				>
@@ -38,7 +38,7 @@ const MyNavBar = () => {
 					<span className='self-center whitespace-nowrap font-sans text-xl font-semibold'>
 						SevLeague
 					</span>
-				</a>
+				</Link>
 				<div className='flex md:order-2'>
 					<ThemeSwitch />
 					<button

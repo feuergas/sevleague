@@ -6,6 +6,7 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Card } from "flowbite-react";
+import Link from "next/link";
 
 const Home = () => {
 	const activeContests = [
@@ -66,12 +67,12 @@ const Home = () => {
 									key={idx}
 									className='flex'
 								>
-									<a
+									<Link
 										href='#'
 										className='mb-1 w-full rounded-sm border-l-4 px-3 py-2 hover:border-primary-500 hover:bg-primary-500/10'
 									>
 										{contest.name}
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>
@@ -91,12 +92,12 @@ const Home = () => {
 									key={idx}
 									className='flex'
 								>
-									<a
+									<Link
 										href='#'
 										className='mb-1 w-full rounded-sm border-l-4 px-3 py-2 hover:border-primary-500 hover:bg-primary-500/10'
 									>
 										{problem.name}
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>
