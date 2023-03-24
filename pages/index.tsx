@@ -1,12 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import ThemeSwitch from "@/components/ThemeSwitch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { Card } from "flowbite-react";
 import Link from "next/link";
+import SectionHeader from "@/components/SectionHeader";
 
 const Home = () => {
 	const activeContests = [
@@ -52,15 +47,14 @@ const Home = () => {
 			</Head>
 			<main className='flex w-full flex-col md:flex-row'>
 				<div className='w-full divide-y divide-gray-200 px-2 dark:divide-gray-700 md:w-9/12'>
-					<section
-						className='mb-4'
-						id='active-contests'
-					>
-						<h2 className='mb-2 text-2xl font-bold'>
-							<span className='text-gradient-ptos-500 dark:bg-gradient-0 dark:text-primary-400'>
-								Active contests
-							</span>
-						</h2>
+					<section className='mb-4'>
+						<SectionHeader
+							id='active-contests'
+							className='text-gradient-ptos-500 dark:bg-gradient-0 mb-2 text-2xl font-bold dark:text-primary-400'
+						>
+							Active Contests{" "}
+							<span className='text-white'>🏆</span>
+						</SectionHeader>
 						<ul>
 							{activeContests.map((contest, idx) => (
 								<li
@@ -77,15 +71,13 @@ const Home = () => {
 							))}
 						</ul>
 					</section>
-					<section
-						className='mb-4'
-						id='problems'
-					>
-						<h2 className='mb-2 text-2xl font-bold'>
-							<span className='text-gradient-ptos-500 dark:bg-gradient-0 dark:text-primary-400'>
-								Problems
-							</span>
-						</h2>
+					<section className='mb-4 pt-4'>
+						<SectionHeader
+							id='problems'
+							className='text-gradient-ptos-500 dark:bg-gradient-0 mb-2 text-2xl font-bold dark:text-primary-400'
+						>
+							Problems <span className='text-white'>💪</span>
+						</SectionHeader>
 						<ul>
 							{problems.map((problem, idx) => (
 								<li
@@ -102,12 +94,15 @@ const Home = () => {
 							))}
 						</ul>
 					</section>
-					<section className='mb-4'>
-						<h2 className='mb-2 text-2xl font-bold'>
-							<span className='text-gradient-ptos-500 dark:bg-gradient-0 dark:text-primary-400'>
-								Test
-							</span>
-						</h2>
+					<section className='mb-4 pt-4'>
+						<SectionHeader
+							id='test'
+							className='text-gradient-ptos-500 dark:bg-gradient-0 mb-2 text-2xl font-bold dark:text-primary-400'
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Perferendis, voluptatum.
+							<span className='text-white'>✒️</span>
+						</SectionHeader>
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing
 							elit. Soluta iusto corporis nihil? Quas saepe,

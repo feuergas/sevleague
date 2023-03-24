@@ -12,6 +12,10 @@ const convertBreadcrumb = (str: string): string => {
 		: "";
 };
 
+const isLocal = (ref: string) => {
+	return true;
+};
+
 const MyBreadcrumb = () => {
 	const router = useRouter();
 	const [breadcrumbs, setBreadcrumbs] = useState<
@@ -28,9 +32,10 @@ const MyBreadcrumb = () => {
 					name: path,
 					href: "/" + linkPath.slice(0, idx + 1).join("/"),
 				}))
-				.filter((item) => item.name !== "");
+				.filter((item) => item.name !== "" && item.name[0] != "#");
+			const breadcrumbArray = pathArray;
 
-			setBreadcrumbs(pathArray);
+			setBreadcrumbs(breadcrumbArray);
 		}
 	}, [router]);
 

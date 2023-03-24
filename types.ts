@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
 
 export interface ReactElementContainer {
-	children: ReactElement;
+	id: string | undefined;
+	children?: React.ReactNode;
+	className?: string | undefined;
 }
 
 export interface BreadcrumbItem {
