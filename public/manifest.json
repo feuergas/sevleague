@@ -3,7 +3,7 @@
 	"short_name": "SevLeague",
 	"theme_color": "#ffffff",
 	"background_color": "#233876",
-	"display": "fullscreen",
+	"display": "standalone",
 	"orientation": "portrait",
 	"scope": "/",
 	"start_url": "/",
