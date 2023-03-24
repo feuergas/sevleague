@@ -7,10 +7,31 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Head from "next/head";
+import { useEffect } from "react";
 config.autoAddCss = false;
 library.add(far, fas);
 
 const App = ({ Component, pageProps }: AppProps) => {
+	useEffect(() => {
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", () => {
+				navigator.serviceWorker.register("/sw.js").then(
+					(registration) =>
+						console.log(
+							"Service Worker registration successful with scope: ",
+							registration.scope
+						),
+					(err) => {
+						console.log(
+							"Service Worker registration failed: ",
+							err
+						);
+					}
+				);
+			});
+		}
+	}, []);
+
 	return (
 		<>
 			<Head>
