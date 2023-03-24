@@ -38,7 +38,7 @@ const MyBreadcrumb = () => {
 
 	return (
 		<nav
-			className='bg-glass mx-3 mb-4 flex rounded-lg px-5 py-3 shadow dark:shadow-lg'
+			className='bg-glass-opaque mx-3 mb-4 flex rounded-lg px-5 py-3'
 			aria-label='Breadcrumb'
 		>
 			<ol className='inline-flex items-center space-x-1 md:space-x-3'>

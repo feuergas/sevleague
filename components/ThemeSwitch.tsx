@@ -1,13 +1,19 @@
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Dropdown } from "flowbite-react";
+import { Fragment, useEffect, useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	BsSunFill,
 	BsMoonStarsFill,
-	BsCircleHalf,
 	BsDisplayFill,
+	BsQuestionLg,
+	BsCheck2,
 } from "react-icons/bs";
+import { Listbox, Transition } from "@headlessui/react";
+import { IconContext } from "react-icons/lib";
+
+const classNames = (...classes: any[]) => {
+	return classes.filter(Boolean).join(" ");
+};
 
 const ThemeSwitch = () => {
 	const [mounted, setMounted] = useState<boolean>(false);
@@ -43,35 +49,53 @@ const ThemeSwitch = () => {
 		},
 	];
 
+	const getThemeIcon = (theme: string | undefined) => {
+		for (const radioTheme of themes)
+			if (radioTheme.value === theme) return radioTheme.icon;
+		return <BsQuestionLg />;
+	};
+
 	return (
-		<div className='inline-flex rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'>
-			<Dropdown
-				arrowIcon={false}
-				inline={true}
-				label={themes.map((radioTheme, idx) =>
-					theme === radioTheme.value ? (
-						<div
-							className='inline-flex h-6 w-6 items-center justify-center'
-							key={idx}
-						>
-							{radioTheme.icon}
-						</div>
-					) : null
-				)}
-			>
-				{themes.map((radioTheme) => (
-					<Dropdown.Item
-						key={radioTheme.name}
-						onClick={() => setTheme(radioTheme.value)}
-					>
-						{radioTheme.icon}
-						<span className='ml-2 font-medium'>
-							{radioTheme.name}
-						</span>
-					</Dropdown.Item>
-				))}
-			</Dropdown>
-		</div>
+		<Listbox
+			value={theme}
+			onChange={setTheme}
+		>
+			<div className='relative'>
+				<Listbox.Button className='navbar-button'>
+					<IconContext.Provider value={{ className: "h-6 w-6" }}>
+						{getThemeIcon(theme)}
+					</IconContext.Provider>
+				</Listbox.Button>
+				<Transition
+					as={Fragment}
+					enter='transition ease-out duration-100'
+					enterFrom='transform opacity-0 scale-95'
+					enterTo='transform opacity-100 scale-100'
+					leave='transition ease-in duration-75'
+					leaveFrom='transform opacity-100 scale-100'
+					leaveTo='transform opacity-0 scale-95'
+				>
+					<Listbox.Options className='bg-opaque absolute right-0 mt-1 max-h-60 w-auto rounded-md py-2 backdrop-blur focus:outline-none sm:text-sm'>
+						{themes.map((radioTheme, idx) => (
+							<Listbox.Option
+								key={idx}
+								className={classNames(
+									"flex cursor-pointer select-none flex-row items-center py-2 px-5 align-middle",
+									radioTheme.value === theme
+										? "text-primary-600 dark:text-white md:bg-transparent"
+										: "dark:text-gray-400 dark:hover:text-white",
+									"hover:bg-gray-600/10 dark:hover:bg-gray-400/10"
+								)}
+								value={radioTheme.value}
+							>
+								{radioTheme.icon}
+								<span className='ml-2'>{radioTheme.name}</span>
+							</Listbox.Option>
+						))}
+					</Listbox.Options>
+				</Transition>
+			</div>
+		</Listbox>
 	);
 };
 
