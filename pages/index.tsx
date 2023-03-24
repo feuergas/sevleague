@@ -51,7 +51,7 @@ const Home = () => {
 				/>
 			</Head>
 			<main className='flex w-full flex-col md:flex-row'>
-				<div className='mx-2 w-full divide-y divide-gray-200 dark:divide-gray-700 md:w-9/12'>
+				<div className='w-full divide-y divide-gray-200 px-2 dark:divide-gray-700 md:w-9/12'>
 					<section
 						className='mb-4'
 						id='active-contests'
@@ -108,7 +108,7 @@ const Home = () => {
 						</h2>
 					</section>
 				</div>
-				<div className='w-full md:w-3/12'>
+				<div className='w-full px-2 md:w-3/12'>
 					<section className='mb-4'>
 						<div className='rounded-xl bg-white/5 bg-clip-padding p-5 shadow dark:shadow-xl'>
 							<p>
