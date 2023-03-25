@@ -99,8 +99,7 @@ const Home = () => {
 							id='test'
 							className='text-gradient-ptos-500 dark:bg-gradient-0 mb-2 text-2xl font-bold dark:text-primary-400'
 						>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Perferendis, voluptatum.
+							Lorem ipsum dolor sit amet consectetur.{" "}
 							<span className='text-white'>✒️</span>
 						</SectionHeader>
 						<p>

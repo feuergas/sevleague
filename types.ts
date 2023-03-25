@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 export interface ReactElementContainer {
-	id: string | undefined;
+	id?: string | undefined;
 	children?: React.ReactNode;
 	className?: string | undefined;
 }
