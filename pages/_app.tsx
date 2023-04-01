@@ -71,8 +71,8 @@ const App = ({ Component, pageProps }: AppProps) => {
 					sizes='32x32'
 				/>
 				<link
-					rel='/icons/icon-192x192.png'
-					href='/apple-icon.png'
+					href='/icons/icon-192x192.png'
+					rel='apple-touch-icon'
 				></link>
 				<meta
 					name='theme-color'

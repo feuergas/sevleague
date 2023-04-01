@@ -1,9 +1,45 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import Link from "next/link";
 import SectionHeader from "@/components/SectionHeader";
+import { useEffect, useState } from "react";
+import { database } from "@/lib/firebase/initFirebase";
+import { doc, getDoc } from "firebase/firestore";
+import Image from "next/image";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 const Home = () => {
+	const [user, setUser] = useState<any>();
+
+	const getUser = async (uid: string) => {
+		const docRef = doc(database, "Users", uid);
+		const userSnap = await getDoc(docRef).then(async (docSnap) => {
+			if (!docSnap.exists()) return null;
+			const data = docSnap.data();
+			return {
+				...data,
+				picsrc: await getUserPicUrl(data.picname),
+			};
+		});
+		setUser(userSnap);
+	};
+
+	const getUserPicUrl = async (src: string) => {
+		if (src === "") return null;
+		return getPicUrl(`upics/${src}`);
+	};
+
+	const getPicUrl = async (src: string) => {
+		const storage = getStorage();
+		const url = await getDownloadURL(
+			ref(storage, `gs://sev-league.appspot.com/${src}`)
+		);
+		return url;
+	};
+
+	useEffect(() => {
+		getUser("JcLMhFtVJaaB1gFv0peK68Fehwz2");
+	}, []);
+
 	const activeContests = [
 		{
 			name: "Gara figa",
@@ -63,7 +99,7 @@ const Home = () => {
 								>
 									<Link
 										href='#'
-										className='mb-1 w-full rounded-sm border-l-4 px-3 py-2 hover:border-primary-500 hover:bg-primary-500/10'
+										className='mb-1 w-full rounded-sm border-l-4 px-3 py-2 hover:border-primary-500 hover:bg-primary-500/10 hover:text-primary-900 dark:hover:text-primary-200'
 									>
 										{contest.name}
 									</Link>
@@ -86,7 +122,7 @@ const Home = () => {
 								>
 									<Link
 										href='#'
-										className='mb-1 w-full rounded-sm border-l-4 px-3 py-2 hover:border-primary-500 hover:bg-primary-500/10'
+										className='mb-1 w-full rounded-sm border-l-4 px-3 py-2 hover:border-primary-500 hover:bg-primary-500/10 hover:text-primary-900 dark:hover:text-primary-200'
 									>
 										{problem.name}
 									</Link>
@@ -263,7 +299,23 @@ const Home = () => {
 				<div className='w-full px-2 md:w-3/12'>
 					<section className='mb-4'>
 						<div className='bg-glass-opaque rounded-xl bg-clip-padding p-5 shadow dark:shadow-xl'>
-							<p>ciao</p>
+							<div className='flex flex-row items-center justify-between'>
+								<p>
+									Bentornato{" "}
+									<span className='font-bold'>
+										{user?.name}
+									</span>
+								</p>
+								{user?.picsrc && (
+									<Image
+										src={user.picsrc}
+										alt='User profile pic'
+										width={300}
+										height={300}
+										className='h-10 w-10 rounded-full border-2 border-gray-200 dark:border-gray-700'
+									/>
+								)}
+							</div>
 						</div>
 					</section>
 				</div>

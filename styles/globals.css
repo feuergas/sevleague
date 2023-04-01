@@ -49,4 +49,21 @@
 	.text-gradient-ptos-500 {
 		@apply bg-gradient-ptos-500 bg-clip-text text-transparent;
 	}
+
+	.text-telegram {
+		@apply text-[#2AABEE] dark:text-primary-400;
+	}
+	.text-discord {
+		@apply text-[#7289DA] dark:text-primary-400;
+	}
+	.text-github {
+		@apply text-[#171515] dark:text-primary-400;
+	}
+	.text-reddit {
+		@apply text-[#FF5700] dark:text-primary-400;
+	}
+
+	.text-link-500 {
+		@apply hover:text-primary-500 dark:hover:text-white;
+	}
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsList } from "react-icons/bs";
 import ThemeSwitch from "./ThemeSwitch";
 
@@ -39,7 +39,18 @@ const MyNavBar = () => {
 						SevLeague
 					</span>
 				</Link>
-				<div className='flex md:order-2'>
+				<div className='flex space-x-2 md:order-2'>
+					<button className='inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-600/10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-400/10  dark:focus:ring-gray-700'>
+						<span className='sr-only'>User settings</span>
+
+						<Image
+							src='https://firebasestorage.googleapis.com/v0/b/sev-league.appspot.com/o/upics%2Ffsociety.png?alt=media&token=a1ece201-e0b8-41af-9212-4c9cf864e7f7'
+							alt='User profile pic'
+							width={300}
+							height={300}
+							className='h-6 w-6 rounded-full'
+						/>
+					</button>
 					<ThemeSwitch />
 					<button
 						className='inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-600/10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-400/10  dark:focus:ring-gray-700 md:hidden'
@@ -68,7 +79,7 @@ const MyNavBar = () => {
 									href={item.href}
 									className={classNames(
 										item.href == router.asPath
-											? "text-primary-600 dark:text-white md:bg-transparent"
+											? "text-primary-500 dark:text-white md:bg-transparent"
 											: "dark:text-gray-400 dark:hover:text-white",
 										true
 											? "border-b border-black/10 dark:border-white/10 md:border-0 "

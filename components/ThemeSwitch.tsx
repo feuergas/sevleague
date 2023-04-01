@@ -10,10 +10,7 @@ import {
 } from "react-icons/bs";
 import { Listbox, Transition } from "@headlessui/react";
 import { IconContext } from "react-icons/lib";
-
-const classNames = (...classes: any[]) => {
-	return classes.filter(Boolean).join(" ");
-};
+import classNames from "classnames";
 
 const ThemeSwitch = () => {
 	const [mounted, setMounted] = useState<boolean>(false);
@@ -79,17 +76,27 @@ const ThemeSwitch = () => {
 						{themes.map((radioTheme, idx) => (
 							<Listbox.Option
 								key={idx}
-								className={classNames(
-									"flex cursor-pointer select-none flex-row items-center py-2 px-5 align-middle",
-									radioTheme.value === theme
-										? "text-primary-600 dark:text-white md:bg-transparent"
-										: "dark:text-gray-400 dark:hover:text-white",
-									"hover:bg-gray-600/10 dark:hover:bg-gray-400/10"
-								)}
 								value={radioTheme.value}
+								as={Fragment}
 							>
-								{radioTheme.icon}
-								<span className='ml-2'>{radioTheme.name}</span>
+								{({ active, selected }) => (
+									<li
+										className={classNames(
+											"flex cursor-pointer select-none flex-row items-center py-2 px-5 align-middle",
+											selected
+												? "text-primary-600 dark:text-white md:bg-transparent"
+												: "dark:text-gray-400 dark:hover:text-white",
+											active
+												? "bg-gray-600/10 dark:bg-gray-400/10 dark:text-white"
+												: ""
+										)}
+									>
+										{radioTheme.icon}
+										<span className='ml-2'>
+											{radioTheme.name}
+										</span>
+									</li>
+								)}
 							</Listbox.Option>
 						))}
 					</Listbox.Options>
